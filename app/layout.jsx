@@ -1,8 +1,22 @@
-import { Schibsted_Grotesk, IBM_Plex_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './style.css'
 
-const sans = Schibsted_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--f-sans', display: 'swap' })
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--f-mono', display: 'swap' })
+// Fonts are self-hosted from app/fonts (SIL OFL, licences alongside) so builds never
+// depend on fetching from Google Fonts at build time.
+const sans = localFont({
+  src: [{ path: './fonts/SchibstedGrotesk-Variable.woff2', weight: '400 900', style: 'normal' }],
+  variable: '--f-sans',
+  display: 'swap',
+})
+const mono = localFont({
+  src: [
+    { path: './fonts/IBMPlexMono-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/IBMPlexMono-500.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/IBMPlexMono-600.woff2', weight: '600', style: 'normal' },
+  ],
+  variable: '--f-mono',
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'Adgentic | AI agents for Amazon, TikTok Shop, Walmart, Target and Noon ads',
